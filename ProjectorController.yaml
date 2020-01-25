@@ -1,0 +1,30 @@
+esphome:
+  name: projectorcontroller
+  platform: ESP32
+  board: nodemcu-32s
+
+wifi:
+  ssid: 'tomato'
+  password: 'bobthebuildertomato'
+  ap:
+    ssid: 'projectorcontroller'
+captive_portal:
+
+logger:
+api:
+  password: 'Bobthebuilder6'
+ota:
+  password: 'Bobthebuilder6'
+
+uart:
+  tx_pin: GPIO12
+  rx_pin: GPIO14
+  baud_rate: 9600
+
+switch:
+  - platform: uart
+    name: "Projector On"
+    data: [0x7E, 0x30, 0x30, 0x30, 0x30, 0x20, 0x31, 0x0D]
+  - platform: uart
+    name: "Projector Off"
+    data: [0x7E, 0x30, 0x30, 0x30, 0x30, 0x20, 0x30, 0x0D]
