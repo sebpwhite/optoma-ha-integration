@@ -26,33 +26,47 @@ uart:
 
 switch:
   - platform: uart
-    name: "Projector On"
+    internal: TRUE
     data: [0x7E, 0x30, 0x30, 0x30, 0x30, 0x20, 0x31, 0x0D]
     id: projon
   - platform: uart
-    name: "Projector Off"
+    internal: TRUE
     data: [0x7E, 0x30, 0x30, 0x30, 0x30, 0x20, 0x30, 0x0D]
     id: projoff
+  - platform: template
+    name: "Projector"
+    id: projswitch
+    lambda: |-
+      if (id(statepow).state==1) {
+        return true;
+      } else {
+        return false;
+      }
+    turn_on_action:
+      - switch.turn_on: projon
+    turn_off_action:
+      - switch.turn_on: projoff
 
 esp32_touch:
   setup_mode: False
+#  iir_filter: 10ms #Seems to cause instability
 
 binary_sensor:
   - platform: esp32_touch
-    name: "Touch On"
+    name: "Touch Toggle"
     pin: GPIO15
     threshold: 200
     on_press:
       then:
-        switch.toggle: projon
+        switch.toggle: projswitch
       
-  - platform: esp32_touch
-    name: "Touch Off"
-    pin: GPIO33
-    threshold: 200
-    on_press:
-      then:
-        switch.toggle: projoff
+#  - platform: esp32_touch
+#    name: "Spare"
+#    pin: GPIO33
+#    threshold: 200
+#    on_press:
+#      then:
+#        switch.toggle: projoff
 
   - platform: esp32_touch
     name: "Touch Movie Mode"
@@ -64,10 +78,23 @@ binary_sensor:
             service: input_boolean.toggle
             data:
               entity_id: input_boolean.movie_mode
+  
+sensor:
   - platform: custom
     lambda: |-
       auto projector_state = new OptomaProjectorSensor(id(uart_bus));
       App.register_component(projector_state);
-      return {projector_state->power_sensor};
-    binary_sensors:
-      name: "Projector State"
+      return {projector_state->power_sensor, projector_state->lamp_hours, projector_state->av_input, projector_state->feedback, projector_state->status_no};
+    sensors:
+      - name: "Projector State"
+        internal: TRUE
+        id: statepow
+      - name: "Lamp Hours"
+        unit_of_measurement: Hours
+        accuracy_decimals: 0
+      - name: "Active Input"
+      - name: "Feedback"
+        internal: TRUE
+      - name: "Status Code"
+        internal: TRUE
+        id: statuscode
