@@ -20,8 +20,8 @@ ota:
 
 uart:
   id: uart_bus
-  tx_pin: GPIO12
-  rx_pin: GPIO14
+  tx_pin: GPIO16
+  rx_pin: GPIO17
   baud_rate: 9600
 
 switch:
