@@ -3936,8 +3936,8 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <part name="S1" library="SparkFun-Switches" deviceset="MOMENTARY-SWITCH-SPST" device="-SMD-6.2MM-TALL" value="Schurter 1301.9316"/>
 <part name="J4" library="SparkFun-Connectors" deviceset="CONN_03" device="" value="Prog/Run"/>
 <part name="U$1" library="SparkFun-IC-Power" deviceset="V_REG_LD1117VXX" device="LD1117-SMD"/>
-<part name="C1" library="SparkFun-Capacitors" deviceset="CAP" device="-1206"/>
-<part name="C2" library="SparkFun-Capacitors" deviceset="CAP" device="-1206"/>
+<part name="C1" library="SparkFun-Capacitors" deviceset="CAP" device="-1206" value="10uF"/>
+<part name="C2" library="SparkFun-Capacitors" deviceset="CAP" device="-1206" value="10uF"/>
 <part name="J5" library="10118194-0001LF" deviceset="10118194-0001LF" device=""/>
 <part name="C3" library="SparkFun-Capacitors" deviceset="CAP" device="-1206" value="0.1uF"/>
 <part name="C4" library="SparkFun-Capacitors" deviceset="CAP" device="-1206" value="0.1uF"/>
@@ -4120,8 +4120,6 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <wire x1="43.18" y1="43.18" x2="40.64" y2="43.18" width="0.1524" layer="91"/>
 <label x="35.56" y="43.18" size="1.778" layer="95"/>
 <pinref part="C3" gate="G$1" pin="2"/>
-<wire x1="40.64" y1="43.18" x2="38.1" y2="43.18" width="0.1524" layer="91"/>
-<junction x="40.64" y="43.18"/>
 </segment>
 </net>
 <net name="5V" class="0">
@@ -4267,7 +4265,6 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <pinref part="U2" gate="A" pin="C2+"/>
 <wire x1="43.18" y1="30.48" x2="41.656" y2="30.48" width="0.1524" layer="91"/>
 <wire x1="41.656" y1="30.48" x2="41.656" y2="28.956" width="0.1524" layer="91"/>
-<wire x1="41.656" y1="28.956" x2="41.91" y2="28.956" width="0.1524" layer="91"/>
 <wire x1="41.656" y1="28.956" x2="35.56" y2="28.956" width="0.1524" layer="91"/>
 <wire x1="35.56" y1="28.956" x2="35.56" y2="33.02" width="0.1524" layer="91"/>
 <pinref part="C4" gate="G$1" pin="2"/>
