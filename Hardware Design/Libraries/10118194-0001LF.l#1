@@ -40,7 +40,7 @@
 <layer number="43" name="vRestrict" color="2" fill="10" visible="yes" active="yes"/>
 <layer number="44" name="Drills" color="7" fill="1" visible="no" active="yes"/>
 <layer number="45" name="Holes" color="7" fill="1" visible="no" active="yes"/>
-<layer number="46" name="Milling" color="3" fill="1" visible="yes" active="yes"/>
+<layer number="46" name="Milling" color="3" fill="1" visible="no" active="yes"/>
 <layer number="47" name="Measures" color="7" fill="1" visible="no" active="yes"/>
 <layer number="48" name="Document" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="49" name="Reference" color="7" fill="1" visible="yes" active="yes"/>
@@ -105,6 +105,7 @@
 <wire x1="3.75" y1="0.325" x2="3.75" y2="-0.325" width="0" layer="46"/>
 <wire x1="3.75" y1="-0.325" x2="3.25" y2="-0.325" width="0" layer="46" curve="-180"/>
 <wire x1="3.25" y1="0.325" x2="3.75" y2="0.325" width="0" layer="46" curve="-180"/>
+<wire x1="3.25" y1="0.325" x2="3.25" y2="-0.325" width="0" layer="46"/>
 <wire x1="3.5" y1="-0.77" x2="3.5" y2="-0.6" width="0.0001" layer="31"/>
 <polygon width="0.0001" layer="31">
 <vertex x="3.5" y="-0.775"/>
@@ -185,6 +186,7 @@
 <vertex x="3.4975" y="0.775"/>
 <vertex x="3.4975" y="0.575" curve="90"/>
 <vertex x="3.25" y="0.325"/>
+<vertex x="3.25" y="0.315"/>
 <vertex x="3.25" y="-0.315"/>
 <vertex x="3.25" y="-0.325" curve="90"/>
 <vertex x="3.5" y="-0.575" curve="90"/>
@@ -198,13 +200,13 @@
 <vertex x="2.305" y="-0.775"/>
 <vertex x="2.305" y="-0.78"/>
 </polygon>
-<smd name="1" x="-1.3" y="2.794" dx="0.4" dy="1.35" layer="1"/>
+<smd name="1" x="-1.3" y="2.7" dx="0.4" dy="1.35" layer="1"/>
 <smd name="2" x="-0.65" y="2.7" dx="0.4" dy="1.35" layer="1"/>
 <smd name="3" x="0" y="2.7" dx="0.4" dy="1.35" layer="1"/>
 <smd name="4" x="0.65" y="2.7" dx="0.4" dy="1.35" layer="1"/>
 <smd name="5" x="1.3" y="2.7" dx="0.4" dy="1.35" layer="1"/>
 <pad name="S1" x="-2.5" y="2.7" drill="0.55" diameter="0.65" shape="long" rot="R90"/>
-<pad name="S2" x="2.5" y="2.7" drill="0.55" diameter="0.65" shape="long" rot="R90"/>
+<pad name="S2" x="2.5" y="2.7" drill="0.55" diameter="0.65" shape="long"/>
 <pad name="S3" x="-3.5" y="0" drill="0.5" diameter="0.775" shape="long" rot="R90"/>
 <smd name="S4" x="-1" y="0" dx="1.5" dy="1.55" layer="1"/>
 <smd name="S5" x="1" y="0" dx="1.5" dy="1.55" layer="1"/>
