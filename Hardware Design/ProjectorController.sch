@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="9.6.1">
+<eagle version="9.5.2">
 <drawing>
 <settings>
 <setting alwaysvectorfont="no"/>
@@ -3861,7 +3861,7 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <smd name="3" x="0" y="2.7" dx="0.4" dy="1.35" layer="1"/>
 <smd name="4" x="0.65" y="2.7" dx="0.4" dy="1.35" layer="1"/>
 <smd name="5" x="1.3" y="2.7" dx="0.4" dy="1.35" layer="1"/>
-<pad name="S1" x="-2.5" y="2.7" drill="0.55" diameter="0.65" shape="long" rot="R90"/>
+<pad name="S1" x="-2.5" y="2.7" drill="0.55" diameter="0.65" shape="long"/>
 <pad name="S2" x="2.5" y="2.7" drill="0.55" diameter="0.65" shape="long"/>
 <pad name="S3" x="-3.5" y="0" drill="0.5" diameter="0.775" shape="long" rot="R90"/>
 <smd name="S4" x="-1" y="0" dx="1.5" dy="1.55" layer="1"/>
@@ -4059,9 +4059,6 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <pinref part="J5" gate="G$1" pin="5"/>
 <wire x1="-88.9" y1="38.1" x2="-86.36" y2="38.1" width="0.1524" layer="91"/>
 <label x="-86.36" y="38.1" size="1.778" layer="95"/>
-<pinref part="J5" gate="G$1" pin="SHIELD"/>
-<wire x1="-88.9" y1="43.18" x2="-86.36" y2="43.18" width="0.1524" layer="91"/>
-<wire x1="-86.36" y1="43.18" x2="-86.36" y2="38.1" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="J4" gate="J$1" pin="1"/>
