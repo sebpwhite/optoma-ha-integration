@@ -1,0 +1,39 @@
+esphome:
+  name: projectorcontroller
+  friendly_name: Projector Controller
+
+esp32:
+  board: nodemcu-32s
+  framework:
+    type: esp-idf
+
+wifi:
+  ssid: "tomato"
+  password: "bobthebuildertomato"
+  ap:
+    ssid: "projectorcontroller"
+
+captive_portal:
+
+logger:
+
+api:
+
+ota:
+  - platform: esphome
+    password: "Bobthebuilder6"
+
+uart:
+  id: uart_bus
+  tx_pin: GPIO16
+  rx_pin: GPIO17
+  baud_rate: 9600
+  data_bits: 8
+  parity: NONE
+  stop_bits: 1
+
+serial_proxy:
+  - id: projector_serial
+    uart_id: uart_bus
+    name: Projector RS232
+    port_type: RS232

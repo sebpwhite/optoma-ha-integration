@@ -1,0 +1,21 @@
+# Optoma Projector
+
+Home Assistant custom integration for controlling an Optoma projector over
+RS-232. It is designed to work with local serial ports and ESPHome serial
+proxies through Home Assistant's serial port selector.
+
+## Repository Layout
+
+- `custom_components/optoma_projector/` contains the HACS-installable Home
+  Assistant integration.
+- `esphome/ProjectorController.yaml` contains the ESPHome firmware that exposes
+  the projector UART as an ESPHome serial proxy.
+
+## Basic Use
+
+1. Flash the ESPHome firmware from `esphome/ProjectorController.yaml`.
+2. Install the `optoma_projector` integration in Home Assistant.
+3. Add the integration from the Home Assistant UI and select the ESPHome serial
+   proxy from the serial port dropdown.
+
+The current integration implements basic power on and power off support.

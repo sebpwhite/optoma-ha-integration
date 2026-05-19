@@ -1,0 +1,18 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Optoma Projector",
+        "description": "Select the serial port for the projector. Home Assistant will list local serial ports and ESPHome serial proxies together.",
+        "data": {
+          "name": "Name",
+          "device": "Serial port"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Cannot open the selected serial port.",
+      "unknown": "Unexpected error."
+    }
+  }
+}

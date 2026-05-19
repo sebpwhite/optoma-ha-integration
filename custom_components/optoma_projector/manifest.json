@@ -1,0 +1,13 @@
+{
+  "domain": "optoma_projector",
+  "name": "Optoma Projector",
+  "codeowners": ["@sebwhite"],
+  "config_flow": true,
+  "documentation": "https://github.com/sebwhite/projector-controller",
+  "issue_tracker": "https://github.com/sebwhite/projector-controller/issues",
+  "integration_type": "device",
+  "iot_class": "local_push",
+  "loggers": ["serialx"],
+  "requirements": [],
+  "version": "0.1.0"
+}
