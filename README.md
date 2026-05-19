@@ -18,4 +18,14 @@ proxies through Home Assistant's serial port selector.
 3. Add the integration from the Home Assistant UI and select the ESPHome serial
    proxy from the serial port dropdown.
 
-The current integration implements basic power on and power off support.
+The current integration implements power, input selection, useful projector
+settings, status sensors, and a re-sync action for the GT1080HDR.
+
+## Entities
+
+- Media player: power and input source selection.
+- Sensors: projector status, lamp hours, and temperature.
+- Switches: AV mute, freeze, 3D mode, and 3D sync invert.
+- Selects: display mode, aspect ratio, brightness mode, and 3D format.
+- Numbers: brightness, contrast, and vertical keystone.
+- Button: re-sync.

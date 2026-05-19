@@ -13,7 +13,7 @@ from homeassistant.helpers.device_registry import DeviceInfo
 from homeassistant.helpers.entity_platform import AddConfigEntryEntitiesCallback
 
 from .const import DOMAIN
-from .projector import OptomaProjector
+from .projector import SOURCE_LIST, OptomaProjector
 
 
 async def async_setup_entry(
@@ -34,7 +34,9 @@ class OptomaProjectorMediaPlayer(MediaPlayerEntity):
     _attr_name = None
     _attr_should_poll = False
     _attr_supported_features = (
-        MediaPlayerEntityFeature.TURN_ON | MediaPlayerEntityFeature.TURN_OFF
+        MediaPlayerEntityFeature.TURN_ON
+        | MediaPlayerEntityFeature.TURN_OFF
+        | MediaPlayerEntityFeature.SELECT_SOURCE
     )
 
     def __init__(
@@ -48,6 +50,7 @@ class OptomaProjectorMediaPlayer(MediaPlayerEntity):
             manufacturer="Optoma",
             name=config_entry.title,
         )
+        self._attr_source_list = SOURCE_LIST
 
     async def async_added_to_hass(self) -> None:
         """Subscribe to projector state updates."""
@@ -65,6 +68,11 @@ class OptomaProjectorMediaPlayer(MediaPlayerEntity):
             return None
         return MediaPlayerState.ON if self._projector.power else MediaPlayerState.OFF
 
+    @property
+    def source(self) -> str | None:
+        """Return the current projector input source."""
+        return self._projector.source
+
     async def async_turn_on(self) -> None:
         """Turn the projector on."""
         await self._projector.async_turn_on()
@@ -72,6 +80,10 @@ class OptomaProjectorMediaPlayer(MediaPlayerEntity):
     async def async_turn_off(self) -> None:
         """Turn the projector off."""
         await self._projector.async_turn_off()
+
+    async def async_select_source(self, source: str) -> None:
+        """Select the projector input source."""
+        await self._projector.async_select_source(source)
 
     @callback
     def _async_on_state_update(self) -> None:
