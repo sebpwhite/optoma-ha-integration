@@ -21,16 +21,12 @@ api:
 
 ota:
   - platform: esphome
-    password: "Bobthebuilder6"
 
 uart:
   id: uart_bus
   tx_pin: GPIO17
   rx_pin: GPIO16
   baud_rate: 9600
-  data_bits: 8
-  parity: NONE
-  stop_bits: 1
 
 serial_proxy:
   - id: projector_serial
