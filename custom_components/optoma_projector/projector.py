@@ -20,6 +20,8 @@ _LOGGER = logging.getLogger(__name__)
 POWER_QUERY_TIMEOUT = 3.0
 INPUT_QUERY_TIMEOUT = 3.0
 GENERIC_QUERY_TIMEOUT = 3.0
+POWER_POLL_INTERVAL = 15.0
+INPUT_POLL_EVERY_N_POWER_POLLS = 4
 
 
 def _command(command: int, value: int | str) -> bytes:
@@ -137,6 +139,7 @@ class OptomaProjector:
         self._reader: asyncio.StreamReader | None = None
         self._writer: asyncio.StreamWriter | None = None
         self._reader_task: asyncio.Task[None] | None = None
+        self._poll_task: asyncio.Task[None] | None = None
         self._connected = False
         self._power: bool | None = None
         self._source: str | None = None
@@ -268,9 +271,17 @@ class OptomaProjector:
             if power:
                 with contextlib.suppress(HomeAssistantError, TimeoutError, OSError):
                     await self.async_query_input()
+        self._poll_task = asyncio.create_task(self._poll_loop())
 
     async def async_disconnect(self) -> None:
         """Close the serial connection."""
+        poll_task = self._poll_task
+        if poll_task is not None:
+            poll_task.cancel()
+            with contextlib.suppress(asyncio.CancelledError):
+                await poll_task
+            self._poll_task = None
+
         reader_task = self._reader_task
         if reader_task is not None:
             reader_task.cancel()
@@ -291,6 +302,30 @@ class OptomaProjector:
         self._fail_pending_input_queries()
         self._fail_pending_payload_queries()
         self._notify_listeners()
+
+    async def _poll_loop(self) -> None:
+        """Poll projector state so external controls do not desync HA state."""
+        poll_count = 0
+        while self._connected:
+            await asyncio.sleep(POWER_POLL_INTERVAL)
+            poll_count += 1
+            previous_power = self._power
+
+            try:
+                power = await self.async_query_power()
+            except (HomeAssistantError, TimeoutError, OSError):
+                _LOGGER.debug("Power poll failed", exc_info=True)
+                continue
+
+            if not power:
+                continue
+
+            if (
+                previous_power is not True
+                or poll_count % INPUT_POLL_EVERY_N_POWER_POLLS == 0
+            ):
+                with contextlib.suppress(HomeAssistantError, TimeoutError, OSError):
+                    await self.async_query_input()
 
     async def async_query_power(self) -> bool:
         """Query and return the projector power state."""

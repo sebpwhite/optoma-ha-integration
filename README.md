@@ -20,6 +20,8 @@ proxies through Home Assistant's serial port selector.
 
 The current integration implements power, input selection, useful projector
 settings, status sensors, and a re-sync action for the GT1080HDR.
+Power state is polled regularly so Home Assistant notices manual power-button
+changes and automatic shutdowns.
 
 ## Entities
 
