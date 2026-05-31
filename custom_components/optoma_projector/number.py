@@ -63,6 +63,7 @@ class OptomaProjectorNumber(NumberEntity):
     """Representation of an Optoma projector number."""
 
     _attr_has_entity_name = True
+    _attr_should_poll = False
     _attr_mode = NumberMode.SLIDER
     _attr_native_step = 1
 

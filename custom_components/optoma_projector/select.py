@@ -76,6 +76,7 @@ class OptomaProjectorSelect(SelectEntity):
     """Representation of an Optoma projector select."""
 
     _attr_has_entity_name = True
+    _attr_should_poll = False
 
     def __init__(
         self,

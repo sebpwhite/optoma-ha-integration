@@ -678,6 +678,8 @@ class OptomaProjector:
         if not power_changed and not source_changed:
             return
         self._power = power
+        if power_changed:
+            _LOGGER.debug("Projector power state changed to %s", power)
         if not power:
             self._source = None
         self._notify_listeners()
@@ -687,6 +689,7 @@ class OptomaProjector:
         if self._source == source:
             return
         self._source = source
+        _LOGGER.debug("Projector source changed to %s", source)
         self._notify_listeners()
 
     def _set_status_code(self, code: int) -> None:

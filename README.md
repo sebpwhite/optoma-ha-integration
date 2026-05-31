@@ -23,6 +23,9 @@ settings, status sensors, and a re-sync action for the GT1080HDR.
 Power state is polled regularly so Home Assistant notices manual power-button
 changes and automatic shutdowns.
 
+For detailed integration logs, enable debug logging for
+`custom_components.optoma_projector`.
+
 ## Entities
 
 - Media player: power and input source selection.
